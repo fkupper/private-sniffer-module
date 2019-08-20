@@ -17,20 +17,20 @@ composer require --dev fkupper/private-sniffer-module
 modules:
     enabled: [PrivateSniffer]
  ```
- 
+
  On your unit tests you can now inspect and test private attributes and methods:
- 
+
 ``` php
-class Foo 
+class Foo
 {
     private $someInt = 1;
-    
+
     private sum(int $a, int $b): int
     {
         return $a + $b;
     }
 }
- 
+
 class TestFoo extends \Codeception\Test\Unit
 {
     /**
@@ -42,14 +42,19 @@ class TestFoo extends \Codeception\Test\Unit
     public function testSum()
     {
         $foo = new Foo();
-        
+
         // get the value of the private attribute $someInt
         $someInt = $this->tester->getPrivatePropertyValue($foo, 'someInt');
         $this->assertEquals(1, $someInt);
-        
+
         // get a closure of the private method sum
         $sum = $this->tester->getPrivateMethod($foo, 'sum');
         $this->assertEquals(2 + 3, $sum(2, 3));
     }
 }
 ```
+# Is this a solution to test bad/not testable code?
+
+Of course not. This is meant to be used when critical and sentive part of your code must be tested and is not possible for any reason.
+
+Best practice still is to develop with unit testing in mind and refactor over time whatever you have that cannot be tested properly.
