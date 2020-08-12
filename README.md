@@ -1,5 +1,8 @@
 # Private Sniffer
 
+[![Total Downloads](https://poser.pugx.org/fkupper/private-sniffer-module/downloads)](//packagist.org/packages/fkupper/private-sniffer-module)
+[![Monthly Downloads](https://poser.pugx.org/fkupper/private-sniffer-module/d/monthly)](//packagist.org/packages/fkupper/private-sniffer-module)
+
 Simple Codeception module to check private elements of objects.
 
 # Installation
